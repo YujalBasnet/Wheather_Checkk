@@ -1,0 +1,324 @@
+:root {
+    --bg-top: #fcf7e8;
+    --bg-middle: #d8efea;
+    --bg-bottom: #d7e6f7;
+    --ink: #1f2937;
+    --muted: #506174;
+    --accent: #0f766e;
+    --accent-soft: #14b8a6;
+    --sun: #f59e0b;
+    --card: rgba(255, 255, 255, 0.78);
+    --card-night: rgba(238, 247, 255, 0.8);
+    --shadow: 0 28px 50px rgba(15, 23, 42, 0.16);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Sora", "Segoe UI", sans-serif;
+    color: var(--ink);
+    background: linear-gradient(160deg, var(--bg-top) 0%, var(--bg-middle) 48%, var(--bg-bottom) 100%);
+    overflow-x: hidden;
+}
+
+.page {
+    position: relative;
+    z-index: 2;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 3.2rem 1.2rem 3.6rem;
+}
+
+.bg-orb {
+    position: fixed;
+    z-index: 1;
+    border-radius: 999px;
+    pointer-events: none;
+    filter: blur(4px);
+    opacity: 0.55;
+    animation: drift 14s ease-in-out infinite alternate;
+}
+
+.orb-a {
+    width: 360px;
+    height: 360px;
+    background: radial-gradient(circle at 35% 35%, rgba(245, 158, 11, 0.5) 0%, rgba(245, 158, 11, 0.08) 70%);
+    top: -90px;
+    right: -110px;
+}
+
+.orb-b {
+    width: 420px;
+    height: 420px;
+    background: radial-gradient(circle at 60% 60%, rgba(20, 184, 166, 0.4) 0%, rgba(20, 184, 166, 0.08) 72%);
+    bottom: -160px;
+    left: -130px;
+    animation-delay: 2s;
+}
+
+.kicker {
+    margin: 0;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.hero h1 {
+    margin: 0.45rem 0 0;
+    font-family: "Bebas Neue", "Sora", sans-serif;
+    font-size: clamp(3.2rem, 12vw, 6.2rem);
+    line-height: 0.92;
+    letter-spacing: 0.04em;
+}
+
+.subtitle {
+    max-width: 600px;
+    margin: 0.85rem 0 1.55rem;
+    color: var(--muted);
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+}
+
+.search-bar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.7rem;
+    max-width: 620px;
+}
+
+.search-bar input {
+    border: 1px solid rgba(15, 118, 110, 0.32);
+    border-radius: 0.8rem;
+    background: rgba(255, 255, 255, 0.92);
+    color: var(--ink);
+    padding: 0.85rem 1rem;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-bar input:focus {
+    border-color: var(--accent-soft);
+    box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.2);
+}
+
+.search-bar button {
+    border: 0;
+    border-radius: 0.8rem;
+    padding: 0.86rem 1.2rem;
+    background: linear-gradient(120deg, var(--accent) 0%, var(--accent-soft) 100%);
+    color: #ffffff;
+    font-size: 0.98rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.search-bar button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 22px rgba(15, 118, 110, 0.28);
+}
+
+.search-bar button:disabled {
+    cursor: wait;
+    filter: grayscale(0.25);
+}
+
+.chip-row {
+    margin-top: 0.95rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+}
+
+.chip {
+    border: 1px solid rgba(80, 97, 116, 0.28);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.64);
+    padding: 0.42rem 0.78rem;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 0.88rem;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.chip:hover {
+    background: #ffffff;
+    color: var(--accent);
+    transform: translateY(-1px);
+}
+
+.status {
+    min-height: 1.9rem;
+    margin-top: 1.2rem;
+    padding: 0.6rem 0.75rem;
+    border-radius: 0.65rem;
+    font-weight: 600;
+    color: var(--muted);
+}
+
+.status.info {
+    background: rgba(255, 255, 255, 0.55);
+}
+
+.status.success {
+    background: rgba(16, 185, 129, 0.14);
+    color: #065f46;
+}
+
+.status.error {
+    background: rgba(220, 38, 38, 0.14);
+    color: #991b1b;
+}
+
+.result-card {
+    margin-top: 1.2rem;
+    padding: 1.25rem 1.15rem 1.2rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-left: 7px solid var(--sun);
+    background: var(--card);
+    backdrop-filter: blur(8px);
+    box-shadow: var(--shadow);
+}
+
+.result-card.night {
+    background: var(--card-night);
+    border-left-color: #2563eb;
+}
+
+.card-head {
+    margin-bottom: 0.6rem;
+}
+
+.card-head h2 {
+    margin: 0;
+    font-size: clamp(1.7rem, 4.8vw, 2.3rem);
+    letter-spacing: -0.02em;
+}
+
+.card-head p {
+    margin: 0.2rem 0 0;
+    color: var(--muted);
+}
+
+.temp-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.85rem;
+    margin: 0.8rem 0 1rem;
+}
+
+.temp-value {
+    font-size: clamp(2.4rem, 9vw, 3.6rem);
+    font-weight: 700;
+    line-height: 1;
+}
+
+.condition {
+    font-size: 1.08rem;
+    font-weight: 600;
+    color: var(--muted);
+}
+
+.metrics {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+}
+
+.metric {
+    border-radius: 0.75rem;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(148, 163, 184, 0.28);
+    padding: 0.72rem 0.75rem;
+}
+
+.metric h3 {
+    margin: 0;
+    font-size: 0.77rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.metric p {
+    margin: 0.36rem 0 0;
+    font-size: 1.02rem;
+    font-weight: 700;
+}
+
+.card-foot {
+    margin-top: 0.9rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.hidden {
+    display: none;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.reveal {
+    animation: rise 0.72s ease both;
+}
+
+@keyframes rise {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes drift {
+    from {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    to {
+        transform: translate3d(18px, -16px, 0) scale(1.06);
+    }
+}
+
+@media (max-width: 760px) {
+    .page {
+        padding-top: 2.2rem;
+    }
+
+    .search-bar {
+        grid-template-columns: 1fr;
+    }
+
+    .search-bar button {
+        width: 100%;
+    }
+
+    .metrics {
+        grid-template-columns: 1fr;
+    }
+}
