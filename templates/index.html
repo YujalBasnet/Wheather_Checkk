@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Weather Pulse</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script defer src="{{ url_for('static', filename='js/app.js') }}"></script>
+</head>
+<body>
+    <div class="bg-orb orb-a"></div>
+    <div class="bg-orb orb-b"></div>
+
+    <main class="page">
+        <section class="hero reveal">
+            <p class="kicker">Live Conditions, Nepal Cities</p>
+            <h1>Weather Pulse</h1>
+            <p class="subtitle">Type a Nepal city and get live weather, humidity, and wind instantly.</p>
+
+            <form id="weatherForm" class="search-bar" autocomplete="off">
+                <label for="cityInput" class="sr-only">City name</label>
+                <input id="cityInput" name="city" type="text" placeholder="Enter Nepal city name" required>
+                <button id="submitButton" type="submit">Check Weather</button>
+            </form>
+
+            <div class="chip-row" aria-label="Suggested cities">
+                <button type="button" class="chip" data-city="Kathmandu">Kathmandu</button>
+                <button type="button" class="chip" data-city="Pokhara">Pokhara</button>
+                <button type="button" class="chip" data-city="Lalitpur">Lalitpur</button>
+                <button type="button" class="chip" data-city="Biratnagar">Biratnagar</button>
+            </div>
+        </section>
+
+        <section id="status" class="status reveal" aria-live="polite"></section>
+
+        <section id="resultCard" class="result-card reveal hidden" aria-live="polite">
+            <header class="card-head">
+                <h2 id="placeName">-</h2>
+                <p id="placeMeta">-</p>
+            </header>
+
+            <div class="temp-wrap">
+                <div id="tempValue" class="temp-value">--</div>
+                <div id="conditionText" class="condition">--</div>
+            </div>
+
+            <div class="metrics">
+                <article class="metric">
+                    <h3>Feels Like</h3>
+                    <p id="feelsLike">--</p>
+                </article>
+                <article class="metric">
+                    <h3>Humidity</h3>
+                    <p id="humidity">--</p>
+                </article>
+                <article class="metric">
+                    <h3>Wind</h3>
+                    <p id="windSpeed">--</p>
+                </article>
+            </div>
+
+            <footer class="card-foot">
+                <p id="recordedAt">--</p>
+                <p id="timezone">--</p>
+            </footer>
+        </section>
+    </main>
+</body>
+</html>
