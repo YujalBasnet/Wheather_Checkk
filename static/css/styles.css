@@ -186,6 +186,12 @@ body.is-night .orb-b {
     background: radial-gradient(circle at top left, rgba(20, 184, 166, 0.2) 0%, transparent 60%);
     opacity: 0.9;
     pointer-events: none;
+    z-index: 0;
+}
+
+.time-card > * {
+    position: relative;
+    z-index: 1;
 }
 
 .time-title {
