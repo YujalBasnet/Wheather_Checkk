@@ -16,22 +16,45 @@
 
     <main class="page">
         <section class="hero reveal">
-            <p class="kicker">Live Conditions, Nepal Cities</p>
-            <h1>Weather Pulse</h1>
-            <p class="subtitle">Type a Nepal city and get live weather, humidity, and wind instantly.</p>
+            <div class="hero-main">
+                <p class="kicker">Live Conditions, Nepal Cities</p>
+                <h1>Weather Pulse</h1>
+                <p class="subtitle">Type a Nepal city and get live weather, humidity, and wind instantly.</p>
 
-            <form id="weatherForm" class="search-bar" autocomplete="off">
-                <label for="cityInput" class="sr-only">City name</label>
-                <input id="cityInput" name="city" type="text" placeholder="Enter Nepal city name" required>
-                <button id="submitButton" type="submit">Check Weather</button>
-            </form>
+                <form id="weatherForm" class="search-bar" autocomplete="off">
+                    <label for="cityInput" class="sr-only">City name</label>
+                    <input id="cityInput" name="city" type="text" placeholder="Enter Nepal city name" required>
+                    <button id="submitButton" type="submit">Check Weather</button>
+                </form>
 
-            <div class="chip-row" aria-label="Suggested cities">
-                <button type="button" class="chip" data-city="Kathmandu">Kathmandu</button>
-                <button type="button" class="chip" data-city="Pokhara">Pokhara</button>
-                <button type="button" class="chip" data-city="Lalitpur">Lalitpur</button>
-                <button type="button" class="chip" data-city="Biratnagar">Biratnagar</button>
+                <div class="chip-row" aria-label="Suggested cities">
+                    <button type="button" class="chip" data-city="Kathmandu">Kathmandu</button>
+                    <button type="button" class="chip" data-city="Pokhara">Pokhara</button>
+                    <button type="button" class="chip" data-city="Lalitpur">Lalitpur</button>
+                    <button type="button" class="chip" data-city="Biratnagar">Biratnagar</button>
+                </div>
             </div>
+
+            <aside class="hero-side">
+                <div class="time-card">
+                    <p class="time-title">Local time</p>
+                    <p id="localClock" class="time-value">--:--:--</p>
+                    <p id="localDate" class="time-meta">--</p>
+                    <div class="time-divider"></div>
+                    <p id="locationClockLabel" class="time-title">City time</p>
+                    <p id="locationClock" class="time-value">--:--:--</p>
+                    <p id="locationDate" class="time-meta">Search a city</p>
+                </div>
+
+                <div class="insight-card">
+                    <p class="insight-title">Live snapshot</p>
+                    <p id="conditionSummary" class="insight-text">Search a city to load live conditions, humidity, and wind.</p>
+                    <div class="insight-row">
+                        <span class="insight-pill">Auto updates</span>
+                        <span id="syncStatus" class="insight-pill">Sync idle</span>
+                    </div>
+                </div>
+            </aside>
         </section>
 
         <section id="status" class="status reveal" aria-live="polite"></section>
